@@ -9,6 +9,7 @@ public class PeriodCombiner {
     public PeriodCombiner(final Period... periods) {
         this.periods = periods;
     }
+
     private Period[] periods;
 
     public Date nextSpot(final Date next) {

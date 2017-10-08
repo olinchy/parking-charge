@@ -18,5 +18,4 @@ public class StringTool {
         }
         return list;
     }
-
 }

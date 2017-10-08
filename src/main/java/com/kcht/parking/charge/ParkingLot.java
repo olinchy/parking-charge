@@ -2,7 +2,6 @@ package com.kcht.parking.charge;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import com.kcht.parking.charge.charger.Charger;
@@ -12,12 +11,12 @@ import com.kcht.parking.charge.charger.StepCharger;
 import com.kcht.parking.charge.datastructure.Car;
 import com.kcht.parking.charge.datastructure.CarTypes;
 import com.kcht.parking.charge.procedure.ExemptRule;
-import com.kcht.parking.charge.timerule.TimeRuleFactory;
 import com.kcht.parking.charge.timeline.DatePuncher;
 import com.kcht.parking.charge.timeline.Period;
 import com.kcht.parking.charge.timeline.TimeSection;
 import com.kcht.parking.charge.timeline.TimeSectionType;
 import com.kcht.parking.charge.timerule.TimeRule;
+import com.kcht.parking.charge.timerule.TimeRuleFactory;
 
 /**
  * Created by olinchy on 04/10/2017.
@@ -46,10 +45,11 @@ public class ParkingLot {
     }
 
     private Charger decideCharger(final CarTypes type) {
-        if (exemptRule != null)
+        if (exemptRule != null) {
             return new Charger(rules.get(type)).addExempt(exemptRule);
-        else
+        } else {
             return new Charger(rules.get(type));
+        }
     }
 
     private List<TimeSection> toTimeSections(final Date enter, final Date exit) {

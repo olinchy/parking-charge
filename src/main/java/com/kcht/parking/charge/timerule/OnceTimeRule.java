@@ -8,7 +8,6 @@ import com.kcht.parking.charge.timeline.TimeSection;
  * Created by olinchy on 04/10/2017.
  */
 public class OnceTimeRule implements TimeRule {
-
     @Override
     public int count(final List<TimeSection> timeSections) {
         return timeSections.size();

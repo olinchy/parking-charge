@@ -20,7 +20,6 @@ public class ParkingLotDefinition {
     }
 
     private static ParkingLotDefinition self;
-
     @XmlElement
     private List<Place> place;
     @XmlAttribute
@@ -28,15 +27,10 @@ public class ParkingLotDefinition {
     @XmlAttribute
     private String night;
 
-    private static ParkingLotDefinition marshall(String fileName) throws JAXBException {
-        JAXBContext jc = JAXBContext.newInstance(ParkingLotDefinition.class);
-        Unmarshaller u = jc.createUnmarshaller();
-        return (ParkingLotDefinition) u.unmarshal(ParkingLotDefinition.class.getResourceAsStream("/" + fileName));
-    }
-
     public static ParkingLotDefinition getInstance() {
         return getInstance("charge_detail.xml");
     }
+
     public static ParkingLotDefinition getInstance(String fileName) {
         try {
             self = marshall(fileName);
@@ -44,6 +38,12 @@ public class ParkingLotDefinition {
             throw new RuntimeException(e);
         }
         return self;
+    }
+
+    private static ParkingLotDefinition marshall(String fileName) throws JAXBException {
+        JAXBContext jc = JAXBContext.newInstance(ParkingLotDefinition.class);
+        Unmarshaller u = jc.createUnmarshaller();
+        return (ParkingLotDefinition) u.unmarshal(ParkingLotDefinition.class.getResourceAsStream("/" + fileName));
     }
 
     public void setDay(final String day) {

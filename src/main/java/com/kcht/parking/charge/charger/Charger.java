@@ -2,7 +2,6 @@ package com.kcht.parking.charge.charger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import com.kcht.parking.charge.procedure.EnterLessThan60MinutesRule;
