@@ -16,7 +16,7 @@
                 <!-- period 可用选项 once 一次性收费-->
                 <!-- period 可用选项 hourly 每小时计费-->
                 <!-- period 可用选项 minutes[15] 每隔XX分钟计费计费，[]内为计时间隔-->
-                <day price="3" period="minutes[15]"/>
+                <day price="3" period="maxHour[6,12,15]"/>
                 <night price="0" period="once"/>
             </carType>
         </level>

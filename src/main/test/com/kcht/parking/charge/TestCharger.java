@@ -97,6 +97,16 @@ public class TestCharger {
                         new Car(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00")),
                         206},
                 new Object[]{
+                        // sedan on Road, more than 12 and over night
+                        getInstance().decideParkingLot(Road, level_primary),
+                        new Car(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")),
+                        148},
+                new Object[]{
+                        // sedan on Road, more than 12 and over night
+                        getInstance("charge_detail_lite.xml").decideParkingLot(Road, level_primary),
+                        new Car(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")),
+                        222},
+                new Object[]{
                         // less than 60 minutes and cross with longer at night shift, means charge with night shift
                         getInstance().decideParkingLot(TransportJunction, level_central),
                         new Car(CarTypes.sedan, date("2017-02-10 21:45:00"), date("2017-02-10 22:30:00")),
