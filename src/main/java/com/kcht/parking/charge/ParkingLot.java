@@ -54,14 +54,7 @@ public class ParkingLot {
 
     private List<TimeSection> toTimeSections(final Date enter, final Date exit) {
         DatePuncher datePuncher = new DatePuncher(this.dayShift, this.nightShift);
-        LinkedList<Date> listDate = new LinkedList<>();
-        listDate.push(enter);
-        datePuncher.start(enter, exit);
-        while (!datePuncher.stopped()) {
-            listDate.add(datePuncher.next());
-        }
-
-        return TimeSection.createBy(listDate, dayShift, nightShift);
+        return TimeSection.createBy(datePuncher.start(enter, exit), dayShift, nightShift);
     }
 
     public void addCharger(

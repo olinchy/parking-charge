@@ -59,31 +59,31 @@
     <place name="Road">
         <level desc="level_central">
             <carType name="sedan">
-                <day price="3" period="minutes[15]"/>
+                <day price="3" period="maxHour[6,12,15]"/>
                 <night price="0" period="once"/>
             </carType>
             <carType name="van">
-                <day price="4" period="minutes[15]"/>
+                <day price="4" period="maxHour[6,12,15]"/>
                 <night price="0" period="once"/>
             </carType>
         </level>
         <level desc="level_primary">
             <carType name="sedan">
-                <day price="2" period="minutes[15]"/>
+                <day price="2" period="maxHour[6,12,15]"/>
                 <night price="0" period="once"/>
             </carType>
             <carType name="van">
-                <day price="3" period="minutes[15]"/>
+                <day price="3" period="maxHour[6,12,15]"/>
                 <night price="0" period="once"/>
             </carType>
         </level>
         <level desc="level_secondary">
             <carType name="sedan">
-                <day price="1" period="minutes[15]"/>
+                <day price="1" period="maxHour[6,12,15]"/>
                 <night price="0" period="once"/>
             </carType>
             <carType name="van">
-                <day price="2" period="minutes[15]"/>
+                <day price="2" period="maxHour[6,12,15]"/>
                 <night price="0" period="once"/>
             </carType>
         </level>

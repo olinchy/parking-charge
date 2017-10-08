@@ -1,7 +1,6 @@
 package com.kcht.parking.charge;
 
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
@@ -26,13 +25,8 @@ public class TestTimeSection {
         Period day;
         Period night;
         DatePuncher puncher = new DatePuncher(day = new Period("07:00-22:00"), night = new Period("22:00-07:00"));
-        puncher.start(startDate, endDate);
+        List<Date> listDate = puncher.start(startDate, endDate);
 
-        final LinkedList<Date> listDate = new LinkedList<>();
-        listDate.push(startDate);
-        while (!puncher.stopped()) {
-            listDate.add(puncher.next());
-        }
         List<TimeSection> list = TimeSection.createBy(listDate, day, night);
         assertThat(list.size(), is(2));
     }

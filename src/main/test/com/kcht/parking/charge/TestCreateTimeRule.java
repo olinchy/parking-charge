@@ -35,6 +35,7 @@ public class TestCreateTimeRule {
                 new Object[]{"minutes[60]", MinutesTimeRule.class},
                 new Object[]{"once", OnceTimeRule.class},
                 new Object[]{"hourly", MinutesTimeRule.class},
+                new Object[]{"maxHour[6,12,15]", MaxHourTimeRule.class},
                 new Object[]{"maxHour[6,12]", MaxHourTimeRule.class}
         );
     }

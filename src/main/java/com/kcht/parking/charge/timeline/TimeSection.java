@@ -20,13 +20,13 @@ public class TimeSection {
     private final TimeSectionType type;
 
     public static List<TimeSection> createBy(
-            final LinkedList<Date> listDate, final Period dayShift, final Period nightShift) {
-
+            final List<Date> list, final Period dayShift, final Period nightShift) {
         ArrayList<TimeSection> timeSections = new ArrayList<>();
-        while (listDate.size() > 1) {
-            Date start = listDate.pop();
-            Date end = listDate.peekFirst();
-            TimeSectionType timeSectionType = null;
+        final LinkedList<Date> linkedListDate = new LinkedList<>(list);
+        while (linkedListDate.size() > 1) {
+            Date start = linkedListDate.pop();
+            Date end = linkedListDate.peekFirst();
+            TimeSectionType timeSectionType;
             if (dayShift.has(start) && !nightShift.has(start)) {
                 timeSectionType = TimeSectionType.Day;
             } else {

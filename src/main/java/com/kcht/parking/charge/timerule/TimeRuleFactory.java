@@ -30,7 +30,7 @@ public class TimeRuleFactory {
             @Override
             public TimeRule createBy(final String period) {
                 List<Integer> list = getNumericFromString(period);
-                return new MaxHourTimeRule(list.get(0), list.get(1));
+                return new MaxHourTimeRule(list.toArray(new Integer[list.size()]));
             }
         }, minutes {
             @Override

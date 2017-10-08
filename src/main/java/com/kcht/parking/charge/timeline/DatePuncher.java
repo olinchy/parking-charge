@@ -1,6 +1,8 @@
 package com.kcht.parking.charge.timeline;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by olinchy on 04/10/2017.
@@ -13,16 +15,15 @@ public class DatePuncher {
     private final PeriodCombiner shifts;
     private TimeLine timeLine;
 
-    public void start(final Date enter, final Date exit) {
+    public List<Date> start(final Date enter, final Date exit) {
         this.timeLine = new TimeLine(enter, shifts, exit);
-    }
 
-    public boolean stopped() {
-        return timeLine.stopped();
-    }
-
-    public Date next() {
-        return timeLine.next();
+        ArrayList<Date> listDate = new ArrayList<>();
+        listDate.add(enter);
+        while (!timeLine.stopped()) {
+            listDate.add(timeLine.next());
+        }
+        return listDate;
     }
 
     private class TimeLine {
