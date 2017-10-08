@@ -1,0 +1,37 @@
+package com.kcht.parking.charge.datastructure;
+
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+
+import com.kcht.parking.charge.ParkingLot;
+
+/**
+ * Created by olinchy on 04/10/2017.
+ */
+public class CarType implements ParkingLotDecorator {
+    @XmlAttribute
+    private String name;
+    @XmlElement
+    private Day day;
+    @XmlElement
+    private Night night;
+
+    public void setDay(final Day day) {
+        this.day = day;
+    }
+
+    public void setNight(final Night night) {
+        this.night = night;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    @Override
+    public ParkingLot decor(final ParkingLot parkingLot) {
+        day.decorator(name).decor(parkingLot);
+        night.decorator(name).decor(parkingLot);
+        return parkingLot;
+    }
+}

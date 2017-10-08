@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<chargeDetail day="07:00-22:00" night="22:00-07:00">
+    <place name="Pavement">
+        <level desc="*">
+            <carType name="sedan">
+                <day price="6+4" period="maxHour[6,12]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+    </place>
+    <place name="Road">
+        <level desc="*">
+            <!--车型选择，可忽略-->
+            <carType name="sedan">
+                <!-- period 可用选项 maxHour[最大时间，阶段时间] maxHour[6,12]表示12小时以内计时上限为6小时，12小时以外累计-->
+                <!-- period 可用选项 once 一次性收费-->
+                <!-- period 可用选项 hourly 每小时计费-->
+                <!-- period 可用选项 minutes[15] 每隔XX分钟计费计费，[]内为计时间隔-->
+                <day price="3" period="minutes[15]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+    </place>
+</chargeDetail>
