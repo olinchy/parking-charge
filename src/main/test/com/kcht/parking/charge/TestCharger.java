@@ -18,6 +18,7 @@ import static com.kcht.parking.charge.datastructure.Levels.level_primary;
 import static com.kcht.parking.charge.datastructure.Levels.level_secondary;
 import static com.kcht.parking.charge.datastructure.ParkingLotDefinition.getInstance;
 import static com.kcht.parking.charge.datastructure.Places.Pavement;
+import static com.kcht.parking.charge.datastructure.Places.PublicFacility;
 import static com.kcht.parking.charge.datastructure.Places.Road;
 import static com.kcht.parking.charge.datastructure.Places.TransportJunction;
 import static com.kcht.parking.charge.timeline.DateTool.date;
@@ -42,9 +43,14 @@ public class TestCharger {
         return Arrays.asList(
                 new Object[]{
                         // less than 15 minutes
-                        getInstance().decideParkingLot(Pavement, level_central),
+                        getInstance().decideParkingLot(PublicFacility, level_central),
                         new Car(CarTypes.sedan, date("2017-02-10 07:45:00"), date("2017-02-10 07:48:00")),
                         0},
+                new Object[]{
+                        // less than 15 minutes
+                        getInstance().decideParkingLot(Pavement, level_central),
+                        new Car(CarTypes.sedan, date("2017-02-10 07:45:00"), date("2017-02-10 07:48:00")),
+                        6},
                 new Object[]{
                         // less than 60 minutes and cross with equal time, charge with day shift
                         getInstance().decideParkingLot(TransportJunction, level_central),
