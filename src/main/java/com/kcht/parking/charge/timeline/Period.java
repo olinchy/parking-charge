@@ -35,13 +35,16 @@ public class Period {
 
     public boolean has(final Date next) {
         Date startDate = getStartDate(next);
-        Date endDate = getEndDate(next);
+        Date endDate = getEndDate(startDate);
 
         return startDate.getTime() <= next.getTime() && endDate.after(next);
     }
 
     private Date getStartDate(final Date next) {
         GregorianCalendar calendar = getCalender(next, startHour, startMinute);
+        if (calendar.getTime().after(next)) {
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) - 1);
+        }
         return calendar.getTime();
     }
 
@@ -65,17 +68,8 @@ public class Period {
     }
 
     public boolean connectWith(final Period another) {
-        boolean isLiterallyConnected = this.endHour == another.startHour && this.endMinute == another.startMinute
+        return this.endHour == another.startHour && this.endMinute == another.startMinute
                 && this.startHour == another.endHour && this.startMinute == another.endMinute;
-
-        final boolean isTimeGapConnected = this.timeGap() + another.timeGap() == 24;
-        return isLiterallyConnected && isTimeGapConnected;
-    }
-
-    private int timeGap() {
-        Date start = getStartDate(new Date());
-        Date end = getEndDate(new Date());
-        return (int) ((end.getTime() - start.getTime()) / 3600000);
     }
 
     @Override

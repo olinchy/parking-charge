@@ -67,7 +67,7 @@ public class TestChargeTimeShift {
 
                 new Object[]{
                         // sedan on Road, more than 12 and over night
-                        new Car(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")), 222}
+                        new Car(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")), 276}
 
         );
     }
