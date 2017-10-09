@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!--  <chargeDetail day="07:00-22:00" night="22:00-07:00"> -->
- <chargeDetail day="06:00-00:00" night="00:00-06:00">
- <!-- <chargeDetail day="23:00-20:00" night="20:00-23:00">  -->
+<!--  <chargeDetail day="06:00-00:00" night="00:00-06:00"> -->
+ <chargeDetail day="23:00-20:00" night="20:00-23:00"> 
       <!--  exempt 免费时段，单位是分钟-->
     <place name="Pavement"  exempt="15">
         <level desc="*">

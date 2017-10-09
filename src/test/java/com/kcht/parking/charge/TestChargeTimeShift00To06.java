@@ -18,8 +18,8 @@ import static com.kcht.parking.charge.timeline.DateTool.date;
 import static org.hamcrest.core.Is.is;
 
 @RunWith(Parameterized.class)
-public class TestChargeTimeShift {
-    public TestChargeTimeShift(final Car car, final double expected) {
+public class TestChargeTimeShift00To06 {
+    public TestChargeTimeShift00To06(final Car car, final double expected) {
         //  this.parkingLot = parkingLot;
         this.car = car;
         this.expected = expected;
@@ -49,7 +49,7 @@ public class TestChargeTimeShift {
                         new Car(CarTypes.sedan, date("2017-02-10 08:32:00"), date("2017-02-10 10:15:00")), 21},
                 new Object[]{
                         // cross shift, on road
-                        new Car(CarTypes.sedan, date("2017-02-10 21:32:00"), date("2017-02-11 08:15:00")), 45},
+                        new Car(CarTypes.sedan, date("2017-02-10 21:32:00"), date("2017-02-11 08:15:00")), 57},
 
                 new Object[]{
                         // van on pavement, more than 6 less than 12
@@ -60,14 +60,23 @@ public class TestChargeTimeShift {
                         new Car(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-10 21:15:00")), 93},
                 new Object[]{
                         // van on pavement, more than 12 and over night
-                        new Car(CarTypes.sedan, date("2017-02-9 23:32:00"), date("2017-02-12 05:15:00")), 264},
+                        new Car(CarTypes.sedan, date("2017-02-9 23:32:00"), date("2017-02-12 05:15:00")), 294},
                 new Object[]{
                         // sedan on Road, more than 12 and over night
-                        new Car(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00")), 357},
+                        new Car(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00")), 381},
 
                 new Object[]{
                         // sedan on Road, more than 12 and over night
-                        new Car(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")), 276}
+                        new Car(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")), 300},
+                new Object[]{//跨白天和晚上时段，不足一个小时，前后时间相等，按前一个时间段收费（白天收费）
+                        new Car(CarTypes.sedan, date("2017-02-09 23:32:00"), date("2017-02-10 00:28:00")), 6},
+                new Object[]{//跨白天和晚上时段，不足一个小时，前后时间相等，按前一个时间段收费（晚上收费）
+                        new Car(CarTypes.sedan, date("2017-02-10 05:32:00"), date("2017-02-10 06:28:00")), 0},
+                new Object[]{//跨白天和晚上时段，超过一个小时，前后时间相等，按前一个时间段收费（晚上收费）
+                        new Car(CarTypes.sedan, date("2017-02-10 05:27:00"), date("2017-02-10 06:28:00")), 6},
+                new Object[]{//跨白天和晚上时段，不足一个小时，前后时间相等，按前一个时间段收费（白天收费）
+                        new Car(CarTypes.sedan, date("2017-02-09 23:02:00"), date("2017-02-10 00:28:00")), 12} 
+                
 
         );
     }
