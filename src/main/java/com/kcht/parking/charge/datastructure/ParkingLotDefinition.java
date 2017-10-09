@@ -60,10 +60,7 @@ public class ParkingLotDefinition {
     }
 
     public ParkingLot decideParkingLot(final Places placeType, final Levels level) {
-
-        ParkingLot parkingLot = new ParkingLot();
-        parkingLot.setDayShift(new Period(day));
-        parkingLot.setNightShift(new Period(night));
+        ParkingLot parkingLot = new ParkingLot(new Period(day), new Period(night));
 
         Place target = this.place.stream().filter(
                 place1 -> place1.equals(Place.defaultPlace(placeType.name()))).findFirst().get();

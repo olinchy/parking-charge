@@ -63,4 +63,23 @@ public class Period {
     public Date nextSpot(final Date next) {
         return getEndDate(next);
     }
+
+    public boolean connectWith(final Period another) {
+        boolean isLiterallyConnected = this.endHour == another.startHour && this.endMinute == another.startMinute
+                && this.startHour == another.endHour && this.startMinute == another.endMinute;
+
+        final boolean isTimeGapConnected = this.timeGap() + another.timeGap() == 24;
+        return isLiterallyConnected && isTimeGapConnected;
+    }
+
+    private int timeGap() {
+        Date start = getStartDate(new Date());
+        Date end = getEndDate(new Date());
+        return (int) ((end.getTime() - start.getTime()) / 3600000);
+    }
+
+    @Override
+    public String toString() {
+        return "Period{" + startHour + ":" + startMinute + "-" + endHour + ":" + endMinute;
+    }
 }

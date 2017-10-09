@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- <chargeDetail day="07:00-22:00" night="22:00-07:00"> -->
-<chargeDetail day="06:00-00:00" night="00:00-06:00">
-      <!--  exempt 免费时段，单位是分钟-->
-    <place name="Pavement"  exempt="15">
+<chargeDetail day="23:00-20:00" night="20:00-23:00">
+    <!--  exempt 免费时段，单位是分钟-->
+    <place name="Pavement" exempt="15">
         <level desc="*">
             <carType name="sedan">
-                   <!-- maxHour[最大时间，阶段时间] maxHour[6,12]表示12小时以内计时上限为6小时，12小时以外累计。计时单位为1小时-->
+                <!-- maxHour[最大时间，阶段时间] maxHour[6,12]表示12小时以内计时上限为6小时，12小时以外累计。计时单位为1小时-->
                 <day price="6+4" period="maxHour[6,12]"/>
-                    <!--  once 一次性收费-->
+                <!--  once 一次性收费-->
                 <night price="0" period="once"/>
             </carType>
         </level>
     </place>
-    <place name="Road"  exempt="15">
+    <place name="Road" exempt="15">
         <level desc="*">
             <!--车型选择，可忽略-->
             <carType name="sedan">

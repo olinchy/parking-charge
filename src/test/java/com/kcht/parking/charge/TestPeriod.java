@@ -41,6 +41,9 @@ public class TestPeriod {
                 new Object[]{new Period("07:00-00:00"), date("2017-02-10 08:00:00"), true},
                 new Object[]{new Period("07:00-00:00"), date("2017-02-10 07:00:00"), true},
                 new Object[]{new Period("07:00-00:00"), date("2017-02-10 06:59:00"), false},
+                new Object[]{new Period("07:00-00:00"), date("2017-02-10 06:59:00"), false},
+                new Object[]{new Period("23:00-20:00"), date("2017-02-10 07:45:00"), false},
+                new Object[]{new Period("20:00-23:00"), date("2017-02-10 07:45:00"), false},
                 new Object[]{new Period("22:00-07:00"), date("2017-02-10 22:00:00"), true}
         );
     }

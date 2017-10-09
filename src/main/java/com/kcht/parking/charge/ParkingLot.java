@@ -19,18 +19,20 @@ import com.kcht.parking.charge.timerule.TimeRule;
 import com.kcht.parking.charge.timerule.TimeRuleFactory;
 
 public class ParkingLot {
+    public ParkingLot(final Period dayShift, final Period nightShift) {
+        this.dayShift = dayShift;
+        this.nightShift = nightShift;
+        if (!dayShift.connectWith(nightShift)) {
+            throw new IllegalArgumentException(
+                    "day shift and night shift should cover 24 hours day shift :" + dayShift.toString()
+                            + " night shift: " + nightShift.toString());
+        }
+    }
+
     private Period dayShift;
     private Period nightShift;
     private HashMap<CarTypes, HashMap<TimeSectionType, ChargerRule>> rules = new HashMap<>();
     private ExemptRule exemptRule;
-
-    public void setDayShift(final Period dayShift) {
-        this.dayShift = dayShift;
-    }
-
-    public void setNightShift(final Period nightShift) {
-        this.nightShift = nightShift;
-    }
 
     public double charge(final Car car) {
 

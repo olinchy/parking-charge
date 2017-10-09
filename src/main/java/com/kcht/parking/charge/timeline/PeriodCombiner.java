@@ -1,5 +1,6 @@
 package com.kcht.parking.charge.timeline;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class PeriodCombiner {
@@ -15,6 +16,6 @@ public class PeriodCombiner {
                 return period.nextSpot(next);
             }
         }
-        throw new RuntimeException("time " + next + "  is not in shifts");
+        throw new RuntimeException("time " + next + "  is not in shifts" + Arrays.toString(periods));
     }
 }
