@@ -6,9 +6,6 @@ import java.util.List;
 
 import com.kcht.parking.charge.ParkingLot;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class Level implements ParkingLotDecorator {
     public Level() {
     }

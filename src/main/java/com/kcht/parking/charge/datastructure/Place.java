@@ -9,9 +9,6 @@ import com.kcht.parking.charge.procedure.ExemptRule;
 
 import static com.kcht.parking.charge.StringTool.getNumericFromString;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class Place {
     public Place() {
     }

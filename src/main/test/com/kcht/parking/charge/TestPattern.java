@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import org.junit.Test;
 
 /**
- * Created by olinchy on 04/10/2017.
+ * Created by shz on 04/10/2017.
  */
 public class TestPattern {
     @Test

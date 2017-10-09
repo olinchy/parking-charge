@@ -4,9 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class Period {
     public Period(String period) {
         if (!period.matches("[0-9]{2}:[0-9]{2}-[0-9]{2}:[0-9]{2}")) {

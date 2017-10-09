@@ -5,9 +5,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class TimeSection {
     public TimeSection(final Date start, final Date end, final TimeSectionType timeSectionType) {
         this.start = start;

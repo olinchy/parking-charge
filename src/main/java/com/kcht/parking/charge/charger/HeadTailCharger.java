@@ -5,9 +5,7 @@ import java.util.List;
 import com.kcht.parking.charge.timeline.TimeSection;
 import com.kcht.parking.charge.timerule.TimeRule;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
+
 public class HeadTailCharger implements ChargerRule {
     public HeadTailCharger(final double headPrice, final double tailPrice, TimeRule timeRule) {
         this.tailPrice = tailPrice;

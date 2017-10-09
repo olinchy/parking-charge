@@ -4,9 +4,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 
 import com.kcht.parking.charge.timeline.TimeSectionType;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class Day {
     @XmlAttribute
     protected String price;

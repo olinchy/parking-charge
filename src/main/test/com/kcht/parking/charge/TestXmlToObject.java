@@ -7,7 +7,7 @@ import com.kcht.parking.charge.datastructure.ParkingLotDefinition;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by olinchy on 04/10/2017.
+ * Created by shz on 04/10/2017.
  */
 public class TestXmlToObject {
     @Test

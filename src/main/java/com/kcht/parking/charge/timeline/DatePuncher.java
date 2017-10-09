@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class DatePuncher {
     public DatePuncher(final Period dayShift, final Period nightShift) {
         this.shifts = new PeriodCombiner(dayShift, nightShift);

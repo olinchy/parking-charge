@@ -25,7 +25,7 @@ import static com.kcht.parking.charge.timeline.DateTool.date;
 import static org.hamcrest.core.Is.is;
 
 /**
- * Created by olinchy on 04/10/2017.
+ * Created by shz on 04/10/2017.
  */
 @RunWith(Parameterized.class)
 public class TestCharger {

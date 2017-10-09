@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<chargeDetail day="07:00-22:00" night="22:00-07:00">
+    <place name="TransportJunction" exempt="15">
+        <level desc="*">
+            <carType name="sedan">
+                <day price="5+5" period="hourly"/>
+                <night price="6" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="8+7" period="hourly"/>
+                <night price="9" period="once"/>
+            </carType>
+        </level>
+    </place>
+    <place name="PublicFacility" exempt="15">
+        <level desc="*">
+            <carType name="sedan">
+                <day price="3+1" period="hourly"/>
+                <night price="4" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="4+2" period="hourly"/>
+                <night price="5" period="once"/>
+            </carType>
+        </level>
+    </place>
+    <place name="Pavement">
+        <level desc="level_central">
+            <carType name="sedan">
+                <day price="6+4" period="maxHour[6,12]"/>
+                <night price="0" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="8+6" period="maxHour[6,12]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+        <level desc="level_primary">
+            <carType name="sedan">
+                <day price="4+3" period="maxHour[6,12]"/>
+                <night price="0" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="7+5" period="maxHour[6,12]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+        <level desc="level_secondary">
+            <carType name="sedan">
+                <day price="3+2" period="maxHour[6,12]"/>
+                <night price="0" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="6+4" period="maxHour[6,12]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+    </place>
+    <place name="Road">
+        <level desc="level_central">
+            <carType name="sedan">
+                <day price="3" period="maxHour[6,12,15]"/>
+                <night price="0" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="4" period="maxHour[6,12,15]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+        <level desc="level_primary">
+            <carType name="sedan">
+                <day price="2" period="maxHour[6,12,15]"/>
+                <night price="0" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="3" period="maxHour[6,12,15]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+        <level desc="level_secondary">
+            <carType name="sedan">
+                <day price="1" period="maxHour[6,12,15]"/>
+                <night price="0" period="once"/>
+            </carType>
+            <carType name="van">
+                <day price="2" period="maxHour[6,12,15]"/>
+                <night price="0" period="once"/>
+            </carType>
+        </level>
+    </place>
+</chargeDetail>

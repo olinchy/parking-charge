@@ -4,9 +4,6 @@ import java.util.List;
 
 import com.kcht.parking.charge.timeline.TimeSection;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 @SuppressWarnings("ALL")
 public class ExemptRule implements Rule {
     public ExemptRule(final Integer limit) {
@@ -14,7 +11,7 @@ public class ExemptRule implements Rule {
     }
 
     private final Integer limit;
-    private boolean ignore = false;
+	private List<TimeSection> timeSectionList;
 
     @Override
     public double charge() {
@@ -23,14 +20,11 @@ public class ExemptRule implements Rule {
 
     @Override
     public void process(final List<TimeSection> timeSectionList) {
-        int minutes = timeSectionList.stream().map(TimeSection::minutes).reduce((x, y) -> x + y).get();
-        if (minutes < limit) {
-            this.ignore = true;
-        }
+    	this.timeSectionList = timeSectionList;
     }
 
     @Override
     public boolean ignoreOthers() {
-        return ignore;
+        return timeSectionList.stream().map(TimeSection::minutes).reduce((x, y) -> x + y).get() < limit;
     }
 }

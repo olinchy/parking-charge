@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
+
 public class StringTool {
     public static List<Integer> getNumericFromString(final String string) {
         Pattern pattern = Pattern.compile("([0-9]+)");

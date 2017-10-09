@@ -5,9 +5,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import com.kcht.parking.charge.ParkingLot;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
+
 public class CarType implements ParkingLotDecorator {
     @XmlAttribute
     private String name;

@@ -6,9 +6,6 @@ import java.util.List;
 import com.kcht.parking.charge.charger.Charger;
 import com.kcht.parking.charge.timeline.TimeSection;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class EnterLessThan60MinutesRule implements Rule {
     public EnterLessThan60MinutesRule(Charger charger) {
         this.charger = charger;

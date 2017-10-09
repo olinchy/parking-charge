@@ -2,9 +2,6 @@ package com.kcht.parking.charge.timeline;
 
 import java.util.Date;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class PeriodCombiner {
     public PeriodCombiner(final Period... periods) {
         this.periods = periods;

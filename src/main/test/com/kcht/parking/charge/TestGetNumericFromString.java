@@ -11,7 +11,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Created by olinchy on 04/10/2017.
+ * Created by shz on 04/10/2017.
  */
 @RunWith(Parameterized.class)
 public class TestGetNumericFromString {

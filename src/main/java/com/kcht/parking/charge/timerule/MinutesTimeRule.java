@@ -4,9 +4,6 @@ import java.util.List;
 
 import com.kcht.parking.charge.timeline.TimeSection;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class MinutesTimeRule implements TimeRule {
     public MinutesTimeRule(int perMinutes) {
         ratio = perMinutes;

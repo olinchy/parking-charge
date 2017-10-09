@@ -4,9 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
+
 public class DateTool {
     public static Date date(final String strDate) {
         try {

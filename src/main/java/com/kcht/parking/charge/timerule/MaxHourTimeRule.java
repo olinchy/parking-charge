@@ -7,9 +7,6 @@ import com.kcht.parking.charge.timeline.TimeSection;
 
 import static com.kcht.parking.charge.datastructure.Pair.pair;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class MaxHourTimeRule implements TimeRule {
     public MaxHourTimeRule(Integer... numerics) {
         this.maxHour = numerics[0];

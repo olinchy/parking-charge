@@ -6,9 +6,6 @@ import java.util.regex.Pattern;
 
 import static com.kcht.parking.charge.StringTool.getNumericFromString;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 public class TimeRuleFactory {
     public static TimeRule createBy(final String period) {
         Pattern pattern = Pattern.compile("([a-zA-Z]+)");

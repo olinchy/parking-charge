@@ -11,9 +11,6 @@ import java.util.List;
 import com.kcht.parking.charge.ParkingLot;
 import com.kcht.parking.charge.timeline.Period;
 
-/**
- * Created by olinchy on 04/10/2017.
- */
 @XmlRootElement(name = "chargeDetail")
 public class ParkingLotDefinition {
     private ParkingLotDefinition() {
@@ -58,6 +55,9 @@ public class ParkingLotDefinition {
         this.night = night;
     }
 
+    public ParkingLot decideParkingLot(final Places placeType) {
+    	return this.decideParkingLot(placeType, Levels.level_central);
+    }
     public ParkingLot decideParkingLot(final Places placeType, final Levels level) {
 
         ParkingLot parkingLot = new ParkingLot();
