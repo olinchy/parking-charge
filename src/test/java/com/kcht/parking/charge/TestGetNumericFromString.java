@@ -19,6 +19,7 @@ public class TestGetNumericFromString {
         this.input = input;
         this.expected = expected;
     }
+
     private String input;
     private Integer[] expected;
 

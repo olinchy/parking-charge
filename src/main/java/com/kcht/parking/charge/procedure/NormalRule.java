@@ -8,7 +8,6 @@ import com.kcht.parking.charge.charger.Charger;
 import com.kcht.parking.charge.timeline.TimeSection;
 import com.kcht.parking.charge.timeline.TimeSectionType;
 
-
 public class NormalRule implements Rule {
     public NormalRule(final Charger charger) {
         this.charger = charger;

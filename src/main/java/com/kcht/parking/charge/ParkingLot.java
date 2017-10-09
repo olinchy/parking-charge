@@ -18,7 +18,6 @@ import com.kcht.parking.charge.timeline.TimeSectionType;
 import com.kcht.parking.charge.timerule.TimeRule;
 import com.kcht.parking.charge.timerule.TimeRuleFactory;
 
-
 public class ParkingLot {
     private Period dayShift;
     private Period nightShift;

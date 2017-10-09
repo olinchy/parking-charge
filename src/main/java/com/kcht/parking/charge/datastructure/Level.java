@@ -1,8 +1,8 @@
 package com.kcht.parking.charge.datastructure;
 
+import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import java.util.List;
 
 import com.kcht.parking.charge.ParkingLot;
 

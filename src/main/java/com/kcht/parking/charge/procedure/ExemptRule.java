@@ -11,7 +11,7 @@ public class ExemptRule implements Rule {
     }
 
     private final Integer limit;
-	private List<TimeSection> timeSectionList;
+    private List<TimeSection> timeSectionList;
 
     @Override
     public double charge() {
@@ -20,7 +20,7 @@ public class ExemptRule implements Rule {
 
     @Override
     public void process(final List<TimeSection> timeSectionList) {
-    	this.timeSectionList = timeSectionList;
+        this.timeSectionList = timeSectionList;
     }
 
     @Override

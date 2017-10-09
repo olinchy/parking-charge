@@ -1,12 +1,12 @@
 package com.kcht.parking.charge.datastructure;
 
+import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
 
 import com.kcht.parking.charge.ParkingLot;
 import com.kcht.parking.charge.timeline.Period;
@@ -56,8 +56,9 @@ public class ParkingLotDefinition {
     }
 
     public ParkingLot decideParkingLot(final Places placeType) {
-    	return this.decideParkingLot(placeType, Levels.level_central);
+        return this.decideParkingLot(placeType, Levels.level_central);
     }
+
     public ParkingLot decideParkingLot(final Places placeType, final Levels level) {
 
         ParkingLot parkingLot = new ParkingLot();

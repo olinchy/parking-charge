@@ -24,6 +24,7 @@ public class TestPeriod {
         this.date = date;
         this.expected = expected;
     }
+
     private Period period;
     private Date date;
     private boolean expected;
@@ -35,6 +36,11 @@ public class TestPeriod {
                 new Object[]{new Period("14:00-17:00"), date("2017-02-10 15:57:12"), true},
                 new Object[]{new Period("14:00-17:00"), date("2017-02-10 17:00:00"), false},
                 new Object[]{new Period("07:00-22:00"), date("2017-02-10 22:00:00"), false},
+                new Object[]{new Period("00:00-07:00"), date("2017-02-10 04:00:00"), true},
+                new Object[]{new Period("00:00-07:00"), date("2017-02-10 08:00:00"), false},
+                new Object[]{new Period("07:00-00:00"), date("2017-02-10 08:00:00"), true},
+                new Object[]{new Period("07:00-00:00"), date("2017-02-10 07:00:00"), true},
+                new Object[]{new Period("07:00-00:00"), date("2017-02-10 06:59:00"), false},
                 new Object[]{new Period("22:00-07:00"), date("2017-02-10 22:00:00"), true}
         );
     }

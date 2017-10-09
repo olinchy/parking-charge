@@ -5,7 +5,6 @@ import java.util.List;
 import com.kcht.parking.charge.timeline.TimeSection;
 import com.kcht.parking.charge.timerule.TimeRule;
 
-
 public class StepCharger implements ChargerRule {
     public StepCharger(final double stepPrice, TimeRule timeRule) {
         this.stepPrice = stepPrice;
