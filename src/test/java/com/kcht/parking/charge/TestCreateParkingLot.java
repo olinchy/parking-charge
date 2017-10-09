@@ -15,7 +15,7 @@ public class TestCreateParkingLot {
     @Test
     public void test() throws Exception {
         ParkingLot parkingLot = ParkingLotDefinition.getInstance().decideParkingLot(
-                Places.TransportJunction, Levels.level_central);
+                Places.Road, Levels.level_central);
         assertTrue(parkingLot != null);
     }
 }
