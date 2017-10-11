@@ -13,7 +13,12 @@ public class MinutesTimeRule implements TimeRule {
 
     @Override
     public int count(final List<TimeSection> timeSections) {
-        int minutes = timeSections.stream().map(TimeSection::minutes).reduce((x, y) -> x + y).get();
+        int count = timeSections.stream().map(timeSection -> count(timeSection.minutes())).reduce(
+                (x, y) -> x + y).get();
+        return count;
+    }
+
+    private int count(final int minutes) {
         int counts = minutes / ratio;
         if (minutes % ratio > 0) {
             counts += 1;
