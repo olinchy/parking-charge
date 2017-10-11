@@ -22,16 +22,42 @@ public class MaxHourTimeRule implements TimeRule {
     private int maxHour;
     private int step;
 
+    /**
+     * sum all minutes first, and then count hours
+     *
+     * @param timeSections
+     */
     @Override
     public int count(final List<TimeSection> timeSections) {
-        int toReturn = timeSections.stream().map(
+        int result = timeSections.stream().map(
+                // every section : hours, minutes
                 timeSection -> pair(timeSection.minutes() / 60, timeSection.minutes() % 60))
+                // every section : hours according [maxHour, step], minutes(= 0 when maxHour < hours < step)
                 .map(pair -> pair(countMaxOut(pair.first()), getMinutes(pair)))
-                .map(pair -> countChargeUnits(pair.first() * 60 + pair.second()))
+                // every section : to minutes
+                .map(pair -> pair.first() * 60 + pair.second())
+                // sum
                 .reduce((x, y) -> x + y).get();
 
-        return toReturn;
+        // minutes / unit
+        return countChargeUnits(result);
     }
+
+    //    /**
+    //     * count every timesection individually
+    //     *
+    //     * @param timeSections
+    //     */
+    //    @Override
+    //    public int count(final List<TimeSection> timeSections) {
+    //        int result = timeSections.stream().map(
+    //                timeSection -> pair(timeSection.minutes() / 60, timeSection.minutes() % 60))
+    //                .map(pair -> pair(countMaxOut(pair.first()), getMinutes(pair)))
+    //                .map(pair -> countChargeUnits(pair.first() * 60 + pair.second()))
+    //                .reduce((x, y) -> x + y).get();
+    //
+    //        return result;
+    //    }
 
     private int countMaxOut(final int hours) {
         int toReturn = 0;
