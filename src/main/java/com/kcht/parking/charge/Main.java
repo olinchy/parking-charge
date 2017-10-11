@@ -8,33 +8,17 @@
 
 package com.kcht.parking.charge;
 
-import java.util.Arrays;
+import com.kcht.parking.charge.Api.Config;
 
-import com.kcht.parking.charge.datastructure.CarType;
-import com.kcht.parking.charge.datastructure.CarTypes;
-import com.kcht.parking.charge.datastructure.Day;
-import com.kcht.parking.charge.datastructure.Level;
-import com.kcht.parking.charge.datastructure.Levels;
-import com.kcht.parking.charge.datastructure.Night;
-import com.kcht.parking.charge.datastructure.ParkingLotDefinition;
-import com.kcht.parking.charge.datastructure.Place;
+import static com.kcht.parking.charge.datastructure.Car.car;
+import static com.kcht.parking.charge.timeline.DateTool.date;
 
 public class Main {
     public static void main(String[] args) {
-        ParkingLotDefinition parkingLotDefinition = ParkingLotDefinition.getEmptyInstance();
-        parkingLotDefinition.setDay("07:00-22:00");
-        parkingLotDefinition.setNight("07:00-22:00");
+        Api.set(new Config("07:00-22:00", "22:00-07:00", "3+4", "maxHour[6, 12, 15]", "0", "once", 15));
 
-        parkingLotDefinition.setPlace(
-                Arrays.asList(
-                        new Place("Pavement", "15",
-                                  Arrays.asList(new Level(
-                                          Arrays.asList(new CarType(
-                                                  CarTypes.sedan.name(),
-                                                  new Day("3+4", "hourly"),
-                                                  new Night("0", "once"))),
-                                          Levels.level_central.name())))));
+        double cost = Api.charge(car(date("2017-02-07 07:35:00"), date("2017-02-07 22:35:00")));
 
-        ParkingLotDefinition.setInstance(parkingLotDefinition);
+        System.out.println(cost);
     }
 }

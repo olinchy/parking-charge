@@ -14,6 +14,10 @@ public class Car {
     private final Date exit;
     private CarTypes type;
 
+    public static Car car(final Date enter, final Date exit) {
+        return new Car(CarTypes.sedan, enter, exit);
+    }
+
     public Date getEnter() {
         return enter;
     }

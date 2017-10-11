@@ -66,8 +66,8 @@ public class ParkingLotDefinition {
         this.night = night;
     }
 
-    public ParkingLot decideParkingLot(final Places placeType) {
-        return this.decideParkingLot(placeType, Levels.level_central);
+    public ParkingLot decideParkingLot() {
+        return this.decideParkingLot(Places.Pavement, Levels.level_central);
     }
 
     public ParkingLot decideParkingLot(final Places placeType, final Levels level) {
@@ -77,5 +77,9 @@ public class ParkingLotDefinition {
                 place1 -> place1.equals(Place.defaultPlace(placeType.name()))).findFirst().get();
 
         return target.decorator(level).decor(parkingLot);
+    }
+
+    public ParkingLot decideParkingLot(final Places placeType) {
+        return this.decideParkingLot(placeType, Levels.level_central);
     }
 }
