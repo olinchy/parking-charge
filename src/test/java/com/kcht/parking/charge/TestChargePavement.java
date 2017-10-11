@@ -9,29 +9,26 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import com.kcht.parking.charge.Api.Config;
 import com.kcht.parking.charge.datastructure.Car;
 import com.kcht.parking.charge.datastructure.CarTypes;
 
-import static com.kcht.parking.charge.datastructure.ParkingLotDefinition.getInstance;
-import static com.kcht.parking.charge.datastructure.Places.Pavement;
 import static com.kcht.parking.charge.timeline.DateTool.date;
 import static org.hamcrest.core.Is.is;
 
 @RunWith(Parameterized.class)
 public class TestChargePavement {
     public TestChargePavement(final Car car, final double expected) {
-        //  this.parkingLot = parkingLot;
         this.car = car;
         this.expected = expected;
     }
 
-    private static ParkingLot parkingLot;
     private Car car;
     private double expected;
 
     @BeforeClass
     public static void setup() {
-        parkingLot = getInstance().decideParkingLot(Pavement);
+        Api.set(new Config("07:00-22:00", "22:00-07:00", "6+4", "maxHour[6, 12,60]", "0", "once", 15));
     }
 
     @Parameterized.Parameters
@@ -59,6 +56,6 @@ public class TestChargePavement {
 
     @Test
     public void test_charger() throws Exception {
-        Assert.assertThat(parkingLot.charge(car), is(expected));
+        Assert.assertThat(Api.charge(car), is(expected));
     }
 }

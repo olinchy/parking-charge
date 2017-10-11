@@ -2,8 +2,6 @@ package com.kcht.parking.charge.datastructure;
 
 import java.util.List;
 import java.util.Optional;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 
 import com.kcht.parking.charge.procedure.ExemptRule;
 
@@ -23,12 +21,9 @@ public class Place {
         this.level = level;
     }
 
-    @XmlAttribute
     private String name;
-    @XmlAttribute
 
     private String exempt;
-    @XmlElement
     private List<Level> level;
 
     public static Place defaultPlace(final String name) {
