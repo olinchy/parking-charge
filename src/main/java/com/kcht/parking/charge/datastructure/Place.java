@@ -17,6 +17,12 @@ public class Place {
         this.name = name;
     }
 
+    public Place(final String name, final String exempt, final List<Level> level) {
+        this.name = name;
+        this.exempt = exempt;
+        this.level = level;
+    }
+
     @XmlAttribute
     private String name;
     @XmlAttribute

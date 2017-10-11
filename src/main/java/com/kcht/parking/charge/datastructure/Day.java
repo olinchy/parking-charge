@@ -5,6 +5,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import com.kcht.parking.charge.timeline.TimeSectionType;
 
 public class Day {
+    public Day(final String price, final String period) {
+        this.price = price;
+        this.period = period;
+    }
+
     @XmlAttribute
     protected String price;
     @XmlAttribute

@@ -6,6 +6,12 @@ import javax.xml.bind.annotation.XmlElement;
 import com.kcht.parking.charge.ParkingLot;
 
 public class CarType implements ParkingLotDecorator {
+    public CarType(final String name, final Day day, final Night night) {
+        this.name = name;
+        this.day = day;
+        this.night = night;
+    }
+
     @XmlAttribute
     private String name;
     @XmlElement

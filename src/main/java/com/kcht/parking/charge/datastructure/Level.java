@@ -10,6 +10,11 @@ public class Level implements ParkingLotDecorator {
     public Level() {
     }
 
+    public Level(final List<CarType> carType, final String desc) {
+        this.carType = carType;
+        this.desc = desc;
+    }
+
     private Level(final String desc) {
         this.desc = desc;
     }

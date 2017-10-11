@@ -14,6 +14,7 @@ import com.kcht.parking.charge.timeline.Period;
 @XmlRootElement(name = "chargeDetail")
 public class ParkingLotDefinition {
     private ParkingLotDefinition() {
+
     }
 
     private static ParkingLotDefinition self;
@@ -29,10 +30,12 @@ public class ParkingLotDefinition {
     }
 
     public static ParkingLotDefinition getInstance(String fileName) {
-        try {
-            self = marshall(fileName);
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
+        if (self == null) {
+            try {
+                self = marshall(fileName);
+            } catch (JAXBException e) {
+                throw new RuntimeException(e);
+            }
         }
         return self;
     }
@@ -41,6 +44,14 @@ public class ParkingLotDefinition {
         JAXBContext jc = JAXBContext.newInstance(ParkingLotDefinition.class);
         Unmarshaller u = jc.createUnmarshaller();
         return (ParkingLotDefinition) u.unmarshal(ParkingLotDefinition.class.getResourceAsStream("/" + fileName));
+    }
+
+    public static void setInstance(ParkingLotDefinition parkingLotDefinition) {
+        self = parkingLotDefinition;
+    }
+
+    public static ParkingLotDefinition getEmptyInstance() {
+        return new ParkingLotDefinition();
     }
 
     public void setDay(final String day) {
