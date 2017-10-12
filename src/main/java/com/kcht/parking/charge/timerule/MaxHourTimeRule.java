@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.kcht.parking.charge.datastructure.Pair;
 import com.kcht.parking.charge.timeline.TimeSection;
+import com.kcht.parking.charge.tools.LambdaConverter;
+import com.kcht.parking.charge.tools.LambdaReducer;
+import com.kcht.parking.charge.tools.To;
 
 import static com.kcht.parking.charge.datastructure.Pair.pair;
 
@@ -29,15 +32,33 @@ public class MaxHourTimeRule implements TimeRule {
      */
     @Override
     public int count(final List<TimeSection> timeSections) {
-        int result = timeSections.stream().map(
-                // every section : hours, minutes
-                timeSection -> pair(timeSection.minutes() / 60, timeSection.minutes() % 60))
-                // every section : hours according [maxHour, step], minutes(= 0 when maxHour < hours < step)
-                .map(pair -> pair(countMaxOut(pair.first()), getMinutes(pair)))
-                // every section : to minutes
-                .map(pair -> pair.first() * 60 + pair.second())
-                // sum
-                .reduce((x, y) -> x + y).get();
+        int result = To.reduce(
+                To.map(To.map(To.map(timeSections, new LambdaConverter<Pair<Integer, Integer>, TimeSection>() {
+                    // every section : hours, minutes
+                    @Override
+                    public Pair<Integer, Integer> to(final TimeSection timeSection) {
+                        return pair(timeSection.minutes() / 60, timeSection.minutes() % 60);
+                    }
+                }), new LambdaConverter<Pair<Integer, Integer>, Pair<Integer, Integer>>() {
+                    // every section : hours according [maxHour, step], minutes(= 0 when maxHour < hours < step)
+                    @Override
+                    public Pair<Integer, Integer> to(
+                            final Pair<Integer, Integer> pair) {
+                        return pair(countMaxOut(pair.first()), getMinutes(pair));
+                    }
+                }), new LambdaConverter<Integer, Pair<Integer, Integer>>() {
+                    // every section : to minutes
+                    @Override
+                    public Integer to(final Pair<Integer, Integer> pair) {
+                        return pair.first() * 60 + pair.second();
+                    }
+                }), new LambdaReducer<Integer>() {
+                    // sum
+                    @Override
+                    public Integer reduce(final Integer x, final Integer y) {
+                        return x + y;
+                    }
+                });
 
         // minutes / unit
         return countChargeUnits(result);

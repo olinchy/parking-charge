@@ -1,9 +1,11 @@
 package com.kcht.parking.charge.datastructure;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.kcht.parking.charge.ParkingLot;
 import com.kcht.parking.charge.procedure.ExemptRule;
+import com.kcht.parking.charge.tools.LambdaFilter;
+import com.kcht.parking.charge.tools.To;
 
 import static com.kcht.parking.charge.StringTool.getNumericFromString;
 
@@ -22,7 +24,6 @@ public class Place {
     }
 
     private String name;
-
     private String exempt;
     private List<Level> level;
 
@@ -62,14 +63,21 @@ public class Place {
     }
 
     public ParkingLotDecorator decorator(final Levels level) {
-        return parkingLot -> {
-            if (exempt != null && !exempt.equals("") && exempt.matches("[\\d]+")) {
-                parkingLot.addExempt(new ExemptRule(getNumericFromString(exempt).get(0)));
+        return new ParkingLotDecorator() {
+            @Override
+            public ParkingLot decor(final ParkingLot parkingLot) {
+                if (exempt != null && !exempt.equals("") && exempt.matches("[\\d]+")) {
+                    parkingLot.addExempt(new ExemptRule(getNumericFromString(exempt).get(0)));
+                }
+                Level target = To.filter(Place.this.level, new LambdaFilter<Level>() {
+                    @Override
+                    public boolean isAccept(final Level level1) {
+                        return level1.equals(Level.defaultLevel(level.name()));
+                    }
+                }).get(0);
+
+                return target.decor(parkingLot);
             }
-            Optional<Level> levelOptional = Place.this.level.stream().filter(
-                    level1 -> level1.equals(Level.defaultLevel(level.name()))).findFirst();
-            Level target = levelOptional.orElseGet(() -> Place.this.level.get(0));
-            return target.decor(parkingLot);
         };
     }
 }

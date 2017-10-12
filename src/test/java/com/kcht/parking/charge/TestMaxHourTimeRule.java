@@ -40,7 +40,7 @@ public class TestMaxHourTimeRule {
         return Arrays.asList(
                 new Object[]{"maxHour[6,12,15]", date("2017-02-10 07:55:20"), date("2017-02-10 08:07:20"), 1},
                 new Object[]{"maxHour[6,12,15]", date("2017-02-10 07:04:20"), date("2017-02-10 15:36:20"), 24},
-                new Object[]{"maxHour[6,12]", date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00"), 39},
+                new Object[]{"maxHour[6,12]", date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00"), 38},
                 new Object[]{"maxHour[6,12, 15]", date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00"), 151},
                 new Object[]{"maxHour[6,12, 15]", date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00"), 124},
                 new Object[]{"maxHour[6,12]", date("2017-02-10 07:32:00"), date("2017-02-10 14:15:00"), 6},

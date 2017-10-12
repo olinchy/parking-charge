@@ -9,6 +9,9 @@ import com.kcht.parking.charge.procedure.NormalRule;
 import com.kcht.parking.charge.procedure.Rule;
 import com.kcht.parking.charge.timeline.TimeSection;
 import com.kcht.parking.charge.timeline.TimeSectionType;
+import com.kcht.parking.charge.tools.LambdaConverter;
+import com.kcht.parking.charge.tools.LambdaReducer;
+import com.kcht.parking.charge.tools.To;
 
 public class Charger {
     public Charger(final HashMap<TimeSectionType, ChargerRule> chargerRule) {
@@ -30,7 +33,17 @@ public class Charger {
             }
         }
 
-        return rules.stream().map(Rule::charge).reduce((x, y) -> x + y).get();
+        return To.reduce(To.map(rules, new LambdaConverter<Double, Rule>() {
+            @Override
+            public Double to(final Rule content) {
+                return content.charge();
+            }
+        }), new LambdaReducer<Double>() {
+            @Override
+            public Double reduce(final Double x, final Double y) {
+                return x + y;
+            }
+        });
     }
 
     public double charge(TimeSectionType type, final List<TimeSection> timeSections) {

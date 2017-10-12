@@ -2,9 +2,10 @@ package com.kcht.parking.charge.datastructure;
 
 import java.util.List;
 
-
 import com.kcht.parking.charge.ParkingLot;
 import com.kcht.parking.charge.timeline.Period;
+import com.kcht.parking.charge.tools.LambdaFilter;
+import com.kcht.parking.charge.tools.To;
 
 public class ParkingLotDefinition {
     private ParkingLotDefinition() {
@@ -15,7 +16,6 @@ public class ParkingLotDefinition {
     private List<Place> place;
     private String day;
     private String night;
-
 
     public static void setInstance(ParkingLotDefinition parkingLotDefinition) {
         self = parkingLotDefinition;
@@ -44,8 +44,12 @@ public class ParkingLotDefinition {
     public ParkingLot decideParkingLot(final Places placeType, final Levels level) {
         ParkingLot parkingLot = new ParkingLot(new Period(day), new Period(night));
 
-        Place target = this.place.stream().filter(
-                place1 -> place1.equals(Place.defaultPlace(placeType.name()))).findFirst().get();
+        Place target = To.filter(place, new LambdaFilter<Place>() {
+            @Override
+            public boolean isAccept(final Place place1) {
+                return place1.equals(Place.defaultPlace(placeType.name()));
+            }
+        }).get(0);
 
         return target.decorator(level).decor(parkingLot);
     }

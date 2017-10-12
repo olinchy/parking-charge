@@ -3,6 +3,9 @@ package com.kcht.parking.charge.timerule;
 import java.util.List;
 
 import com.kcht.parking.charge.timeline.TimeSection;
+import com.kcht.parking.charge.tools.LambdaConverter;
+import com.kcht.parking.charge.tools.LambdaReducer;
+import com.kcht.parking.charge.tools.To;
 
 public class MinutesTimeRule implements TimeRule {
     public MinutesTimeRule(int perMinutes) {
@@ -13,7 +16,17 @@ public class MinutesTimeRule implements TimeRule {
 
     @Override
     public int count(final List<TimeSection> timeSections) {
-        int minutes = timeSections.stream().map(TimeSection::minutes).reduce((x, y) -> x + y).get();
+        int minutes = To.reduce(To.map(timeSections, new LambdaConverter<Integer, TimeSection>() {
+            @Override
+            public Integer to(final TimeSection content) {
+                return content.minutes();
+            }
+        }), new LambdaReducer<Integer>() {
+            @Override
+            public Integer reduce(final Integer x, final Integer y) {
+                return x + y;
+            }
+        });
         int counts = minutes / ratio;
         if (minutes % ratio > 0) {
             counts += 1;

@@ -3,6 +3,7 @@ package com.kcht.parking.charge.procedure;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.kcht.parking.charge.charger.Charger;
 import com.kcht.parking.charge.timeline.TimeSection;
@@ -25,10 +26,15 @@ public class NormalRule implements Rule {
     public void process(final List<TimeSection> timeSectionList) {
         HashMap<TimeSectionType, List<TimeSection>> map = new HashMap<>();
         for (TimeSection timeSection : timeSectionList) {
-            List<TimeSection> list = map.computeIfAbsent(timeSection.type(), k -> new ArrayList<>());
+            List<TimeSection> list = map.get(timeSection.type());
+            if (list == null) {
+                map.put(timeSection.type(), list = new ArrayList<>());
+            }
             list.add(timeSection);
         }
-        map.entrySet().stream().forEach(entry -> charge += charger.charge(entry.getKey(), entry.getValue()));
+        for (Map.Entry<TimeSectionType, List<TimeSection>> entry : map.entrySet()) {
+            charge += charger.charge(entry.getKey(), entry.getValue());
+        }
     }
 
     @Override
