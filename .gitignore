@@ -125,3 +125,4 @@ fabric.properties
 ### SVN template
 .svn/
 
+/target/
