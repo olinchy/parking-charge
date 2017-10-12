@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -16,6 +17,7 @@ import com.kcht.parking.charge.datastructure.CarTypes;
 import static com.kcht.parking.charge.timeline.DateTool.date;
 import static org.hamcrest.core.Is.is;
 
+@Ignore
 @RunWith(Parameterized.class)
 public class TestChargerRoad {
     public TestChargerRoad(final CarRecord car, final double expected) {
@@ -30,7 +32,7 @@ public class TestChargerRoad {
     @BeforeClass
     public static void setup() {
         Api.set(new Config("07:00-22:00", "20:00-07:00", "3+3", "maxHour[6, 12,15]", "0", "once", 15));
-     //   Api.set(new Config("07:00-22:00", "22:00-07:00", "3", "maxHour[6, 12,15]", "0", "once", 15));
+        //   Api.set(new Config("07:00-22:00", "22:00-07:00", "3", "maxHour[6, 12,15]", "0", "once", 15));
     }
 
     @Parameterized.Parameters
