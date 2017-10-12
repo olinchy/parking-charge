@@ -6,9 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * Created by olinchy on 16-2-19.
- */
+
 public class To {
     public static <T, C> List<T> map(Collection<C> content, LambdaConverter<T, C> func) {
         ArrayList<T> list = new ArrayList<T>();

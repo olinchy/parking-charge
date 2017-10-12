@@ -15,7 +15,7 @@ import com.kcht.parking.charge.tools.To;
 
 public class Charger {
     public Charger(final HashMap<TimeSectionType, ChargerRule> chargerRule) {
-        rules = new ArrayList<>();
+        rules = new ArrayList<Rule>();
         rules.add(new EnterLessThan60MinutesRule(this));
         rules.add(new NormalRule(this));
 
