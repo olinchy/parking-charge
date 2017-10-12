@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import com.kcht.parking.charge.Api.Config;
-import com.kcht.parking.charge.datastructure.Car;
+import com.kcht.parking.charge.datastructure.CarRecord;
 import com.kcht.parking.charge.datastructure.CarTypes;
 
 import static com.kcht.parking.charge.timeline.DateTool.date;
@@ -18,13 +18,13 @@ import static org.hamcrest.core.Is.is;
 
 @RunWith(Parameterized.class)
 public class TestChargerRoad {
-    public TestChargerRoad(final Car car, final double expected) {
+    public TestChargerRoad(final CarRecord car, final double expected) {
         //  this.parkingLot = parkingLot;
         this.car = car;
         this.expected = expected;
     }
 
-    private Car car;
+    private CarRecord car;
     private double expected;
 
     @BeforeClass
@@ -38,35 +38,35 @@ public class TestChargerRoad {
         return Arrays.asList(
                 new Object[]{
                         // less than 15 minutes
-                        new Car(CarTypes.sedan, date("2017-02-10 07:45:00"), date("2017-02-10 07:48:00")), 0},
+                        new CarRecord(CarTypes.sedan, date("2017-02-10 07:45:00"), date("2017-02-10 07:48:00")), 0},
 
                 new Object[]{
                         // less than 60 minutes and cross with equal time, charge with day shift
-                        new Car(CarTypes.sedan, date("2017-02-10 21:32:00"), date("2017-02-10 22:28:00")), 6},
+                        new CarRecord(CarTypes.sedan, date("2017-02-10 21:32:00"), date("2017-02-10 22:28:00")), 6},
                 new Object[]{
                         // not cross shift, on road
-                        new Car(CarTypes.sedan, date("2017-02-10 08:32:00"), date("2017-02-10 10:15:00")), 21},
+                        new CarRecord(CarTypes.sedan, date("2017-02-10 08:32:00"), date("2017-02-10 10:15:00")), 21},
                 new Object[]{
                         // cross shift, on road
-                        new Car(CarTypes.sedan, date("2017-02-10 21:32:00"), date("2017-02-11 08:15:00")), 21},
+                        new CarRecord(CarTypes.sedan, date("2017-02-10 21:32:00"), date("2017-02-11 08:15:00")), 21},
 
                 new Object[]{
                         // van on pavement, more than 6 less than 12
-                        new Car(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-10 14:15:00")), 72},
+                        new CarRecord(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-10 14:15:00")), 72},
 
                 new Object[]{
                         // van on pavement, more than 12
-                        new Car(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-10 21:15:00")), 93},
+                        new CarRecord(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-10 21:15:00")), 93},
                 new Object[]{
                         // van on pavement, more than 12 and over night
-                        new Car(CarTypes.sedan, date("2017-02-9 23:32:00"), date("2017-02-12 05:15:00")), 216},
+                        new CarRecord(CarTypes.sedan, date("2017-02-9 23:32:00"), date("2017-02-12 05:15:00")), 216},
                 new Object[]{
                         // sedan on Road, more than 12 and over night
-                        new Car(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00")), 309},
+                        new CarRecord(CarTypes.sedan, date("2017-02-10 07:32:00"), date("2017-02-12 21:15:00")), 309},
 
                 new Object[]{
                         // sedan on Road, more than 12 and over night
-                        new Car(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")), 222}
+                        new CarRecord(CarTypes.sedan, date("2017-02-09 21:32:00"), date("2017-02-11 22:28:00")), 222}
 
         );
     }

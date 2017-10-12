@@ -11,7 +11,7 @@ import org.junit.runners.Parameterized;
 
 import com.kcht.parking.charge.Api.Config;
 
-import static com.kcht.parking.charge.datastructure.Car.car;
+import static com.kcht.parking.charge.datastructure.CarRecord.carRecord;
 import static com.kcht.parking.charge.timeline.DateTool.date;
 import static org.hamcrest.core.Is.is;
 
@@ -59,6 +59,6 @@ public class TestChargePavement {
 
     @Test
     public void test_charger() throws Exception {
-        Assert.assertThat(Api.charge(car(date(enter), date(exit))), is(expected));
+        Assert.assertThat(Api.charge(carRecord(date(enter), date(exit))), is(expected));
     }
 }

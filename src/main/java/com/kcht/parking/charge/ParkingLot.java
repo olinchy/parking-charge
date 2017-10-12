@@ -8,7 +8,7 @@ import com.kcht.parking.charge.charger.Charger;
 import com.kcht.parking.charge.charger.ChargerRule;
 import com.kcht.parking.charge.charger.HeadTailCharger;
 import com.kcht.parking.charge.charger.StepCharger;
-import com.kcht.parking.charge.datastructure.Car;
+import com.kcht.parking.charge.datastructure.CarRecord;
 import com.kcht.parking.charge.datastructure.CarTypes;
 import com.kcht.parking.charge.procedure.ExemptRule;
 import com.kcht.parking.charge.timeline.DatePuncher;
@@ -34,7 +34,7 @@ public class ParkingLot {
     private HashMap<CarTypes, HashMap<TimeSectionType, ChargerRule>> rules = new HashMap<>();
     private ExemptRule exemptRule;
 
-    public double charge(final Car car) {
+    public double charge(final CarRecord car) {
 
         Charger charger = decideCharger(car.getType());
 

@@ -13,7 +13,7 @@
 		可选项：minutes[n],n=60相当于hourly,按n分钟为计费单位
 		可选项：once
 		
-nightPrice:	夜间收费价格	
+nightPrice:	夜间收费价格，默认为0	
 nightMode：默认once，按此收费
 exempt：免费时段，默认15（分钟）
  

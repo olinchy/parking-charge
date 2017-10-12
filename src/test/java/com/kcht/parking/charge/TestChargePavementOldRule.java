@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import com.kcht.parking.charge.Api.Config;
-import com.kcht.parking.charge.datastructure.Car;
+import com.kcht.parking.charge.datastructure.CarRecord;
 import com.kcht.parking.charge.datastructure.CarTypes;
 
 import static com.kcht.parking.charge.timeline.DateTool.date;
@@ -75,7 +75,7 @@ public class TestChargePavementOldRule {
 
     @Test
     public void test_charger() throws Exception {
-        Car car = new Car(CarTypes.sedan, date(enter), date(exit));
+        CarRecord car = new CarRecord(CarTypes.sedan, date(enter), date(exit));
         Assert.assertThat(Api.charge(car), is(expected));
     }
 }

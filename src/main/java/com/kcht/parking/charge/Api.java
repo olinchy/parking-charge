@@ -4,7 +4,7 @@ package com.kcht.parking.charge;
 import java.util.Collections;
 import java.util.List;
 
-import com.kcht.parking.charge.datastructure.Car;
+import com.kcht.parking.charge.datastructure.CarRecord;
 import com.kcht.parking.charge.datastructure.CarType;
 import com.kcht.parking.charge.datastructure.CarTypes;
 import com.kcht.parking.charge.datastructure.Day;
@@ -29,7 +29,7 @@ public class Api {
 		ParkingLotInstance.setParkingLot(parkingLotDefinition.decideParkingLot());
 	}
 
-	public static Double charge(final Car car) {
+	public static Double charge(final CarRecord car) {
 		return ParkingLotInstance.getInstance().charge(car);
 	}
 
