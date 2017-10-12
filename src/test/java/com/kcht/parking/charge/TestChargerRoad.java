@@ -29,7 +29,7 @@ public class TestChargerRoad {
 
     @BeforeClass
     public static void setup() {
-        Api.set(new Config("07:00-22:00", "22:00-07:00", "3+3", "maxHour[6, 12,15]", "0", "once", 15));
+        Api.set(new Config("07:00-22:00", "20:00-07:00", "3+3", "maxHour[6, 12,15]", "0", "once", 15));
      //   Api.set(new Config("07:00-22:00", "22:00-07:00", "3", "maxHour[6, 12,15]", "0", "once", 15));
     }
 
