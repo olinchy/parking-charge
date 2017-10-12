@@ -15,9 +15,7 @@ import static com.kcht.parking.charge.timeline.DateTool.date;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * Created by shz on 04/10/2017.
- */
+
 public class TestTimeSection {
     @Test
     public void test() throws Exception {
