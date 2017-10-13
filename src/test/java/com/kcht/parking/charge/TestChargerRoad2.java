@@ -19,8 +19,8 @@ import static org.hamcrest.core.Is.is;
 
 
 @RunWith(Parameterized.class)
-public class TestChargerRoad {
-    public TestChargerRoad(final CarRecord car, final double expected) {
+public class TestChargerRoad2 {
+    public TestChargerRoad2(final CarRecord car, final double expected) {
         //  this.parkingLot = parkingLot;
         this.car = car;
         this.expected = expected;
@@ -31,7 +31,7 @@ public class TestChargerRoad {
 
     @BeforeClass
     public static void setup() {
-        Api.set(new Config("07:00-22:00", "22:00-07:00", "3+3", "maxHour[6,12,15]", "0", "once", 15));
+        Api.set(new Config("06:00-23:59", "23:59-06:00", "3+3", "maxHour[6,12,15]", "0", "once", 15));
         //   Api.set(new Config("07:00-22:00", "22:00-07:00", "3", "maxHour[6, 12,15]", "0", "once", 15));
     }
 
@@ -40,7 +40,7 @@ public class TestChargerRoad {
         return Arrays.asList(
                 new Object[]{
                         // less than 15 minutes
-                        new CarRecord(CarTypes.sedan, date("2017-02-10 07:45:00"), date("2017-02-10 07:48:00")), 0},
+                        new CarRecord(CarTypes.sedan, date("2017-10-12 17:35:00"), date("2017-10-13 10:25:00")), 126},
 
                 new Object[]{
                         // less than 60 minutes and cross with equal time, charge with day shift

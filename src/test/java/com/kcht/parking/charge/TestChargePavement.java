@@ -50,8 +50,9 @@ public class TestChargePavement {
                         //night in,another night out
                         {"2017-02-10 07:32:00", "2017-02-12 21:15:00", 106},
                         //day in,after two days out
-                        // 大于12小时过夜
+                        // 锟斤拷锟斤拷12小时锟斤拷夜
                         {"2017-02-09 21:32:00", "2017-02-11 22:28:00", 78}
+                      
                 }
 
         );
